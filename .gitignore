@@ -5,7 +5,6 @@ __pycache__/
 .env
 *.wav
 *.mp4
-!demo/*.mp4
 article/
 web/
 ofdm/

@@ -32,20 +32,6 @@ This repo currently implements **FSK (Frequency Shift Keying)** — the simplest
 
 ---
 
-## Demo
-
-### Audible Mode (5 kHz / 7 kHz) — you can hear the data
-
-<video src="https://github.com/lashka12/AirModem/raw/main/demo/fsk-audible.mp4" controls width="600"></video>
-
-### Ultrasonic Mode (18 kHz / 18.5 kHz) — completely silent to humans
-
-<video src="https://github.com/lashka12/AirModem/raw/main/demo/fsk-ultrasonic.mp4" controls width="600"></video>
-
-> Both demos send the message `"hi"` from one device to another using FSK modulation through air.
-
----
-
 ## Project Structure
 
 ```
@@ -58,9 +44,6 @@ AirModem/
 │   ├── encoding.py     # 6-bit character codec + CRC-8
 │   ├── protocol.py     # Frame builder/parser (preamble, start marker, checksum)
 │   └── audio.py        # Speaker and Microphone wrappers (PyAudio)
-├── demo/
-│   ├── fsk-audible.mp4     # Demo: audible FSK transmission
-│   └── fsk-ultrasonic.mp4  # Demo: silent ultrasonic FSK
 └── requirements.txt
 ```
 
