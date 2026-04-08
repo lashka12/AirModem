@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.env
+*.wav
+*.mp4
+article/
+web/
+ofdm/
+.cursor/
