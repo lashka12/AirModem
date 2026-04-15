@@ -7,7 +7,9 @@ AirModem is an acoustic modem built from scratch in Python. It encodes text into
 This repo currently implements **FSK (Frequency Shift Keying)** — the simplest form of audio data transmission: two frequencies, one per bit.
 
 **article**
+
 linkedin: https://www.linkedin.com/pulse/i-built-acoustic-modem-sends-data-between-devices-using-ashkar-qjk4f/
+
 medium: https://medium.com/@ashkar.lawrence/i-built-an-acoustic-modem-that-sends-data-between-devices-using-sound-9619ed2def07
 
 ---
