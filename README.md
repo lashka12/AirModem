@@ -4,7 +4,10 @@
 
 AirModem is an acoustic modem built from scratch in Python. It encodes text into audio tones, plays them through a speaker, and decodes them on another device's microphone. The entire data link runs over air.
 
-This repo currently implements **FSK (Frequency Shift Keying)** — the simplest form of audio data transmission: two frequencies, one per bit.
+The repo implements two modulation schemes:
+
+- **FSK (Frequency Shift Keying)** — the simplest form of audio data transmission: two frequencies, one per bit. Slow but reliable. ~50 bits/s.
+- **OFDM (Orthogonal Frequency Division Multiplexing)** — the same technique behind Wi-Fi, 4G, and DSL. 21 carriers played in parallel, one bit per carrier per chord. ~1,200 bits/s — about 25× faster than FSK.
 
 
 **article**
@@ -47,6 +50,10 @@ AirModem/
 │   ├── config.py       # FSK parameters: frequencies, timing, presets
 │   ├── transmit.py     # Encode text → FSK audio → speaker
 │   └── receive.py      # Microphone → FFT → decode text
+├── ofdm/
+│   ├── config.py       # OFDM parameters: 21 carriers, spacing, symbol/guard timing
+│   ├── transmit.py     # Encode text → 21-carrier chord → speaker
+│   └── receive.py      # Microphone → cross-correlation sync → channel estimation → FFT → decode
 ├── shared/
 │   ├── encoding.py     # 6-bit character codec + CRC-8
 │   ├── protocol.py     # Frame builder/parser (preamble, start marker, checksum)
@@ -73,7 +80,7 @@ pip install -r requirements.txt
 
 > **Note:** PyAudio requires PortAudio. On macOS: `brew install portaudio`. On Ubuntu: `sudo apt install portaudio19-dev`.
 
-### Send a Message
+### Send a Message — FSK (slow, reliable)
 
 ```bash
 python3 -m fsk.transmit "hello world"
@@ -91,13 +98,26 @@ python3 -m fsk.transmit "hello world"
    Done!
 ```
 
+### Send a Message — OFDM (fast, parallel)
+
+```bash
+python3 -m ofdm.transmit "hello world"
+```
+
+OFDM sends 21 bits at once per chord, so the same message takes a fraction of the time on air.
+
 ### Receive Messages
 
 On another terminal (or another machine):
 
 ```bash
+# pick the matching receiver for whichever transmitter you ran
 python3 -m fsk.receive
+# or
+python3 -m ofdm.receive
 ```
+
+Example FSK receiver output:
 
 ```
 ============================================================
@@ -114,6 +134,8 @@ python3 -m fsk.receive
   Checksum: VALID
 ============================================================
 ```
+
+> **Tip:** OFDM is much more sensitive to noise and timing than FSK. Test indoors, with the speaker and mic 30–100 cm apart, and make sure the volume is loud enough.
 
 ---
 
@@ -165,8 +187,9 @@ The 6-bit codec supports: `a-z`, `0-9`, `space`, `.` `,` `?` `!`
 
 ## What's Next
 
-- **OFDM mode** — send multiple bits per time slot using frequency chords (same technique as Wi-Fi)
-- **Live app** — a UI for selecting mode, typing messages, and watching the waveform in real time
+- **Live app** — a UI for selecting mode (FSK / OFDM), typing messages, and watching the waveform in real time
+- **Error correction** — Reed-Solomon or convolutional coding on top of OFDM to survive noisier environments
+- **File transfer** — chunked frames + sequence numbers for sending arbitrary binary data over sound
 
 ---
 

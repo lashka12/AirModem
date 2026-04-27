@@ -7,5 +7,4 @@ __pycache__/
 *.mp4
 article/
 web/
-ofdm/
 .cursor/
