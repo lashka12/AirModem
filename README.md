@@ -10,11 +10,15 @@ The repo implements two modulation schemes:
 - **OFDM (Orthogonal Frequency Division Multiplexing)** — the same technique behind Wi-Fi, 4G, and DSL. 21 carriers played in parallel, one bit per carrier per chord. ~1,200 bits/s — about 25× faster than FSK.
 
 
-**article**
+## Articles
 
-linkedin: https://www.linkedin.com/pulse/i-built-acoustic-modem-sends-data-between-devices-using-ashkar-qjk4f/
+**Part 1 — FSK: I Built an Acoustic Modem That Sends Data Between Devices Using Sound**
+- LinkedIn: https://www.linkedin.com/pulse/i-built-acoustic-modem-sends-data-between-devices-using-ashkar-qjk4f/
+- Medium: https://medium.com/@ashkar.lawrence/i-built-an-acoustic-modem-that-sends-data-between-devices-using-sound-9619ed2def07
 
-medium: https://medium.com/@ashkar.lawrence/i-built-an-acoustic-modem-that-sends-data-between-devices-using-sound-9619ed2def07
+**Part 2 — OFDM: Sending 21 Bits at Once Through Sound — OFDM Made My Acoustic Modem 25× Faster**
+- LinkedIn: https://www.linkedin.com/pulse/sending-21-bits-once-through-sound-ofdm-made-my-acoustic-ashkar-4kwif/
+- Medium: https://medium.com/@ashkar.lawrence/sending-21-bits-at-once-through-sound-ofdm-made-my-acoustic-modem-25-faster-862110d5fe15
 
 ---
 
